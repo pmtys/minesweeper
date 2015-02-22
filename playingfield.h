@@ -40,7 +40,7 @@ public:
     PlayingField(int  piece);
     ~PlayingField(){};
 
-    int getMines() { return mines; }
+    int  getMines() { return mines; }
 
     void newMove(int row, int column, bool& fail_move);
     void newMark(int row, int column);
