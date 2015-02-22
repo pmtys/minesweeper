@@ -112,7 +112,7 @@ void PlayingField::showFields(bool fail_move, int row, int column){
     if(!fail_move) statusBar();
     std::cout << "    ";
     SetConsoleTextAttribute(h_console, 11);
-    for(int i = 0; i < piece; ++i) std::cout << (char)(i+65) << " ";
+    for(int i = 0; i < piece; ++i) std::cout << static_cast<char>(i+65) << " ";
     std::cout << std::endl;
     SetConsoleTextAttribute(h_console, 7);
     if(fail_move){
@@ -125,7 +125,7 @@ void PlayingField::showFields(bool fail_move, int row, int column){
             for(int j = 0; j < piece; ++j){
                 if( !field_vec[i][j].isVisible() && !field_vec[i][j].isMarked() ){
                     SetConsoleTextAttribute(h_console, 8);
-                    std::cout << (char)223 << " ";
+                    std::cout << static_cast<char>(223) << " ";
                     SetConsoleTextAttribute(h_console, 7);
                 }else if(field_vec[i][j].isMarked()){
                     SetConsoleTextAttribute(h_console, 10);
@@ -144,7 +144,7 @@ void PlayingField::showFields(bool fail_move, int row, int column){
     }
     std::cout << "    ";
     SetConsoleTextAttribute(h_console, 11);
-    for(int i = 0; i < piece; ++i) std::cout << (char)(i+65) << " ";
+    for(int i = 0; i < piece; ++i) std::cout << static_cast<char>(i+65) << " ";
     std::cout << std::endl;
     SetConsoleTextAttribute(h_console, 7);
 }
@@ -161,12 +161,12 @@ void PlayingField::showDown(int row, int column){
             if(field_vec[i][j].isMine()){
                 if(i == row && j == column){
                     SetConsoleTextAttribute(h_console, 192);
-                    std::cout << (char)15;
+                    std::cout << static_cast<char>(15);
                     SetConsoleTextAttribute(h_console, 7);
                     std::cout << " ";
                 }else{
                     SetConsoleTextAttribute(h_console, 12);
-                    std::cout << (char)15 << " ";
+                    std::cout << static_cast<char>(15) << " ";
                     SetConsoleTextAttribute(h_console, 7);
                 }
             }else{
@@ -181,5 +181,5 @@ void PlayingField::showDown(int row, int column){
 }
 
 void PlayingField::statusBar(){
-    std::cout << "Hatralevo aknak szama: " << mines - countMarkedFields() << "\n";
+    std::cout << "Mines left: " << mines - countMarkedFields() << "\n";
 }

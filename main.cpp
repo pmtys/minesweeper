@@ -13,8 +13,8 @@ int main()
     bool new_game = false;
     do{
         system("CLS");
-        std::cout << "Aknakereso\n mezo felfedese: c6\n mezo jelolese: m c6\n\n";
-        std::cout << "Valasszon szintet:\n 1 kezdo(10x10)\n 2 halado(20x20)\n";
+        std::cout << "Find The Mine\n make a field visible: c6\n mark a field: m c6\n\n";
+        std::cout << "Choose the level:\n 1 beginner(10x10)\n 2 advanced(20x20)\n";
 
         int choice = 0;
         do{
@@ -40,7 +40,7 @@ int main()
 void theIOProcess(std::string& attempt, PlayingField& area){
     system("CLS");
     area.showFields();
-    std::cout << "\nA felfedni, vagy jelolni kivant mezo: ";
+    std::cout << "\nGet a field: ";
     do{
         getline(std::cin, attempt);
     }while(attempt.size() != 2 && attempt.size() != 3 && attempt.size() != 4 && attempt.size() != 5);
@@ -61,9 +61,9 @@ void makesAMove(std::string& attempt, PlayingField& area, bool& fail_move){
 }
 
 bool wantNewGame(bool fail_move){
-    fail_move ? std::cout << "\nSajnos vesztettel!\n" : std::cout << "\nGratulalunk nyertel!\n";
+    fail_move ? std::cout << "\nYou lose!\n" : std::cout << "\nYou win!\n";
     int choice = 0;
-    std::cout << "Szeretnel uj jatekot? (1-igen / 2-nem): ";
+    std::cout << "Do you want a new game? (1-yes / 2-no): ";
     do{
         std::cin >> choice;
     }while(choice != 1 && choice != 2);
